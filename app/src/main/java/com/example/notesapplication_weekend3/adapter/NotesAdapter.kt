@@ -1,12 +1,15 @@
 package com.example.notesapplication_weekend3.adapter
 
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notesapplication_weekend3.R
+import com.example.notesapplication_weekend3.view.DisplayNoteActvity
 import com.example.notesapplication_weekend3.view.MainActivity
 import kotlinx.android.synthetic.main.activity_add_notes.*
 
@@ -45,7 +48,16 @@ class NotesAdapter(val notesList: List<String>): RecyclerView.Adapter<NotesAdapt
 
 
             }
+
         }
+
+        holder.note.setOnClickListener {
+            val intent = Intent(it.context,DisplayNoteActvity::class.java)
+            intent.putExtra("NoteContent",holder.note.text)
+            it.context.startActivity(intent)
+          //  Toast.makeText(it.context,holder.note.text,Toast.LENGTH_LONG).show()
+        }
+
     }
 
 
